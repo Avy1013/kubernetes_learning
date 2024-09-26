@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: ng-dpl
+  labels:
+    app: ng  
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ng
+  template: 
+    metadata:
+      labels:
+        app: ng
+    spec: 
+      containers: 
+      - name: ng-con
+        image: nginx
+        ports:
+        - containerPort: 80
+    
