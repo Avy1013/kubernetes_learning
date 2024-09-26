@@ -13,4 +13,4 @@ Miscellaneous / nuanced stuff:
 >> Port forwarding is temporary, suitable for development
 >> NodePort is persistent, better for production scenarios
 >> Port forwarding bypasses Kubernetes networking, connects directly to service
->> NodePort exposes service on all nodes, allows external access
+>> NodePort exposes service on all nodes, allows external access.
