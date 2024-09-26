@@ -1,0 +1,22 @@
+### Troubleshooting Notes
+
+**What was the problem:**  
+>> Unable to change the default username ("admin") and password ("pass") in mongo-express for authentication.
+
+**What was the solution:**  
+>> Updated the Kubernetes deployment to reference the correct username and password from a Kubernetes Secret.  
+>> Set environment variables in the mongo-express deployment to configure Basic Authentication and MongoDB credentials.
+
+**Commands used:**  
+>> Check logs for mongo-express:  
+>> kubectl logs mongo-express-<pod-name>  
+>> Check environment variables in mongo-express pod:  
+>> kubectl -- exec -it mongo-express-<pod-name> -- env  
+>> Retrieve the Secret:  
+>> kubectl get secret mongodb-secret -o yaml  
+>> Edit the mongo-express deployment (YAML) to set environment variables for authentication.
+
+**Miscellaneous / nuanced stuff:**  
+>> Verified that `ME_CONFIG_BASICAUTH` was set to true to enable Basic Authentication.  
+>> Utilized `valueFrom` in the deployment YAML to securely inject username and password from the Secret into the environment variables.  
+>> Double-checked that `ME_CONFIG_MONGODB_ADMINUSERNAME` and `ME_CONFIG_MONGODB_ADMINPASSWORD` were set correctly from the Secret.
