@@ -1,0 +1,16 @@
+Problem:
+
+>> Unable to access Nginx service in Minikube using NodePort
+
+Solution:
+
+>> Used " minikube service ng-service " to create a tunnel
+>> Alternatively, used --> kubectl port-forward service/ng-service 30007:8080
+
+Miscellaneous / nuanced stuff:
+
+>> NodePort not directly accessible with Docker driver on macOS
+>> Port forwarding is temporary, suitable for development
+>> NodePort is persistent, better for production scenarios
+>> Port forwarding bypasses Kubernetes networking, connects directly to service
+>> NodePort exposes service on all nodes, allows external access
